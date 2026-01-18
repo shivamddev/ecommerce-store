@@ -41,7 +41,7 @@ export class OrderService {
 		const orderNumber = store.incrementOrderCounter();
 
 		const order: Order = {
-			id: `order_${new Date().getTime()}`,
+			id: `order_${orderNumber}_${new Date().getTime()}`,
 			orderNumber,
 			items: [...cart.items],
 			subtotal,

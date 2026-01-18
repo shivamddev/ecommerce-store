@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { adminService } from '../services/admin.service';
 import { sendSuccess, sendError } from '../utils/response.util';
 import { config } from '../config';
+import { store } from '../store';
 
 export class AdminController {
 	getStats(req: Request, res: Response): void {
@@ -25,6 +26,11 @@ export class AdminController {
 		} else {
 			sendError(res, 'CONDITIONS_NOT_MET', result.message);
 		}
+	}
+
+	resetStore(req: Request, res: Response): void {
+		store.reset();
+		sendSuccess(res, { reset: true }, 'Store has been reset');
 	}
 }
 

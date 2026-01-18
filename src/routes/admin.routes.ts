@@ -7,5 +7,6 @@ router.get('/stats', (req, res) => adminController.getStats(req, res));
 router.post('/discount/generate', (req, res) =>
 	adminController.generateDiscount(req, res),
 );
+router.post('/reset', (req, res) => adminController.resetStore(req, res));
 
 export default router;

@@ -1,8 +1,10 @@
-import { Product } from '../models/product.model';
+import { Cart, Product } from '../models';
 
 class Store {
 	private static instance: Store;
-	products = new Map<string, Product>();
+
+	products: Map<string, Product> = new Map();
+	carts: Map<string, Cart> = new Map();
 
 	private constructor() {
 		this.seedProducts();

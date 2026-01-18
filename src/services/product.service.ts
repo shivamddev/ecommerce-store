@@ -1,5 +1,5 @@
 import { store } from '../store';
-import { Product } from '../models/product.model';
+import { Product } from '../models';
 
 export class ProductService {
 	getAllProducts(): Product[] {

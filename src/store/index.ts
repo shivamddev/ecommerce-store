@@ -1,10 +1,13 @@
-import { Cart, Product } from '../models';
+import { Cart, DiscountCode, Order, Product } from '../models';
 
 class Store {
 	private static instance: Store;
 
 	products: Map<string, Product> = new Map();
 	carts: Map<string, Cart> = new Map();
+	orders: Map<string, Order> = new Map();
+	discountCodes: Map<string, DiscountCode> = new Map();
+	orderCounter: number = 0;
 
 	private constructor() {
 		this.seedProducts();
@@ -37,6 +40,18 @@ class Store {
 			{ id: 'prod_5', name: 'Cap', price: 1499, description: 'Baseball Cap' },
 		];
 		products.forEach((p) => this.products.set(p.id, p));
+	}
+
+	incrementOrderCounter(): number {
+		return ++this.orderCounter;
+	}
+
+	reset(): void {
+		this.carts.clear();
+		this.orders.clear();
+		this.discountCodes.clear();
+		this.orderCounter = 0;
+		this.seedProducts();
 	}
 }
 

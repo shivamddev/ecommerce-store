@@ -6,15 +6,16 @@ const app = express();
 
 // Middleware
 const allowedOrigins = [
-	'https://ecommerce-store-api-six.vercel.app',
-	'http://localhost:5173/',
+	'https://ecommerce-store-weld-xi.vercel.app',
+	'http://localhost:5173',
 ];
 
 app.use(
 	cors({
 		origin(origin, cb) {
-			if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-			return cb(new Error('Not allowed by CORS'));
+			if (!origin) return cb(null, true); // curl/postman
+			if (allowedOrigins.includes(origin)) return cb(null, true);
+			return cb(new Error(`CORS blocked: ${origin}`));
 		},
 		credentials: true,
 	}),

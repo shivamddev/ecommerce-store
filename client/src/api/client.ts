@@ -1,7 +1,7 @@
 import type { ApiResponse, Cart, Order, Product, StoreStats } from '../types';
 
 // const API_BASE = 'http://localhost:3000/api';
-const API_BASE = 'http://https://ecommerce-store-api-six.vercel.app/api';
+const API_BASE = 'https://ecommerce-store-api-six.vercel.app/api';
 
 async function request<T>(
 	endpoint: string,

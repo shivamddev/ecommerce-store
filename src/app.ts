@@ -5,7 +5,20 @@ import routes from './routes';
 const app = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+	'https://ecommerce-store-api-six.vercel.app',
+	'http://localhost:5173/',
+];
+
+app.use(
+	cors({
+		origin(origin, cb) {
+			if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+			return cb(new Error('Not allowed by CORS'));
+		},
+		credentials: true,
+	}),
+);
 app.use(express.json());
 
 // Health check
